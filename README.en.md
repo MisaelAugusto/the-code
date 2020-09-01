@@ -17,7 +17,7 @@
 
 <h2 id="preview">📽️ Preview</h2>
 
-Working on it...
+<img src="https://ik.imagekit.io/ocq8ayf2ug/the-code-preview__tQN66WnL5.gif" alt="The Code"/>
 
 <h2 id="technologies">💻️ Technologies</h2>
 <ul>
