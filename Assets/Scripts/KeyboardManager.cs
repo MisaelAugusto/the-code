@@ -17,11 +17,11 @@ public class KeyboardManager : MonoBehaviour
   private Button buyTip, buyHeart;
   private int inputIndex, gameState, coins;
   private Image[] codeBlocks, attemptBlocks;
-  [SerializeField] private Sprite[] ballSprites;
   [SerializeField] private Sprite codeTipBlock;
+  [SerializeField] private Sprite[] ballSprites;
   [SerializeField] private Sprite[] numberSprites;
-  private RectTransform codePanelUp, codePanelDown, attemptsContent;
   private RectTransform[] attemptUp, attemptDown, ballsUp, ballsDown;
+  private RectTransform codePanelUp, codePanelDown, attemptsContent, background;
 
   private void Awake()
   {
@@ -56,6 +56,7 @@ public class KeyboardManager : MonoBehaviour
       this.attemptUp = new RectTransform[this.level.GetMaxTries() + 5];
       this.ballsDown = new RectTransform[this.level.GetMaxTries() + 5];
       this.attemptDown = new RectTransform[this.level.GetMaxTries() + 5];
+      this.background = GameObject.Find("Background 2").GetComponent<RectTransform>();
       this.attemptsContent = GameObject.Find("Content").GetComponent<RectTransform>();
 
       this.SetInputIndex();
@@ -441,7 +442,7 @@ public class KeyboardManager : MonoBehaviour
       this.coins *= 2;
     }
 
-    this.Pause("Background");
+    this.background.DOScale(new Vector3(7.0f, 14.0f, 1.0f), 0.0f);
     AudioManager.instance.PlayEffectSound("Win Panel");
     RectTransform panel = GameObject.Find("Win Panel").GetComponent<RectTransform>();
 
@@ -471,7 +472,7 @@ public class KeyboardManager : MonoBehaviour
     this.gameState = 2;
     PlayerManager.instance.player.SetGameState(2);
 
-    this.Pause("Background");
+    this.background.DOScale(new Vector3(7.0f, 14.0f, 1.0f), 0.0f);
     AudioManager.instance.PlayEffectSound("Lose Panel");
     RectTransform panel = GameObject.Find("Lose Panel").GetComponent<RectTransform>();
 
@@ -505,7 +506,6 @@ public class KeyboardManager : MonoBehaviour
     this.gameState = 0;
     PlayerManager.instance.player.SetGameState(0);
 
-    this.Resume("Background");
     this.level.SetTryAgain(false);
 
     int[] tips = this.GenerateTipArray((int)Mathf.Floor(this.numbers.Length / 2));
@@ -599,11 +599,10 @@ public class KeyboardManager : MonoBehaviour
     }
 
     this.gameState = 0;
+    this.level.SetDoubleCoins(false);
     PlayerManager.instance.player.SetGameState(0);
 
-    this.level.SetDoubleCoins(false);
-
-    this.Resume("Background");
+    this.background.DOScale(Vector3.zero, 0.0f);
     if (win)
     {
       if (this.level.GetNumberLevel() == 1000)
@@ -678,9 +677,7 @@ public class KeyboardManager : MonoBehaviour
 
   private void Pause(string gameObjectName)
   {
-    Vector3 scale = (gameObjectName.Equals("Background")) ? new Vector3(7.0f, 14.0f, 1.0f): Vector3.one;
-
-    GameObject.Find(gameObjectName).GetComponent<RectTransform>().DOScale(scale, 0.0f);
+    GameObject.Find(gameObjectName).GetComponent<RectTransform>().DOScale(Vector3.one, 0.0f);
   }
 
   private void Resume(string gameObjectName)

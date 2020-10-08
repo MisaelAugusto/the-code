@@ -204,7 +204,7 @@ public class UIManager : MonoBehaviour
   public void OpenTipPanel()
   {
     AudioManager.instance.PlayEffectSound("Tip");
-    this.Pause();
+    this.Pause2();
     this.tipPanel.DOAnchorPosX(0.0f, 0.5f);
     this.tipPanel.DOAnchorPosY(0.0f, 0.5f);
     this.tipPanel.DOScale(Vector3.one, 0.5f);
@@ -213,7 +213,7 @@ public class UIManager : MonoBehaviour
   public void CloseTipPanel()
   {
     AudioManager.instance.PlayEffectSound("Cancel 2");
-    this.Resume();
+    this.Resume2();
     this.tipPanel.DOAnchorPosX(300.0f, 0.5f);
     this.tipPanel.DOAnchorPosY(353.0f, 0.5f);
     this.tipPanel.DOScale(Vector3.zero, 0.5f);
@@ -222,7 +222,7 @@ public class UIManager : MonoBehaviour
   public void OpenRecoveryPanel()
   {
     AudioManager.instance.PlayEffectSound("Recovery");
-    this.Pause();
+    this.Pause2();
     this.recoveryPanel.DOAnchorPosX(0.0f, 0.5f);
     this.recoveryPanel.DOAnchorPosY(0.0f, 0.5f);
     this.recoveryPanel.DOScale(Vector3.one, 0.5f);
@@ -231,7 +231,7 @@ public class UIManager : MonoBehaviour
   public void CloseRecoveryPanel()
   {
     AudioManager.instance.PlayEffectSound("Cancel");
-    this.Resume();
+    this.Resume2();
     this.recoveryPanel.DOAnchorPosX(300.0f, 0.5f);
     this.recoveryPanel.DOAnchorPosY(456.0f, 0.5f);
     this.recoveryPanel.DOScale(Vector3.zero, 0.5f);
@@ -255,5 +255,15 @@ public class UIManager : MonoBehaviour
   public void Resume()
   {
     GameObject.Find("Background").GetComponent<RectTransform>().DOScale(Vector3.zero, 0.0f);
+  }
+
+  public void Pause2()
+  {
+    GameObject.Find("Background 2").GetComponent<RectTransform>().DOScale(new Vector3(7.0f, 14.0f, 1.0f), 0.0f);
+  }
+
+  public void Resume2()
+  {
+    GameObject.Find("Background 2").GetComponent<RectTransform>().DOScale(Vector3.zero, 0.0f);
   }
 }

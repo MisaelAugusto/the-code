@@ -13,5 +13,10 @@ public class GameScript : MonoBehaviour
   {
     PlayerManager.instance.Save();
   }
+
+  private void OnApplicationQuit()
+  {
+    PlayerManager.instance.Save();
+  }
 }
 

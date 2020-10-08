@@ -12,4 +12,9 @@ public class StartScript : MonoBehaviour
   {
     PlayerManager.instance.Save();
   }
+
+  private void OnApplicationQuit()
+  {
+    PlayerManager.instance.Save();
+  }
 }

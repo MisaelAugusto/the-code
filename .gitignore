@@ -58,7 +58,7 @@ sysinfo.txt
 *.unitypackage
 
 # keys
-*.keystore
+#*.keystore
 
 # collab
 *.collabignore
