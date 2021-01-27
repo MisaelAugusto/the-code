@@ -31,9 +31,9 @@ public class ADSUnity : MonoBehaviour
   private void Load(Scene scene, LoadSceneMode mode)
   {
     #if UNITY_ANDROID
-      gameID = "18658";
+      gameID = "3566525";
     #elif UNITY_IOS
-      gameID = "18660";
+      gameID = "3566524";
     #endif
 
     if (Advertisement.isSupported && !Advertisement.isInitialized) {
@@ -150,7 +150,7 @@ public class ADSUnity : MonoBehaviour
   public void SetCoinsADS()
   {
     int number = UnityEngine.Random.Range(0, 10);
-    
+
     if (number < 4)
     {
       this.coinsADS = 25;
