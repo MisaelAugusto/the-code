@@ -32,7 +32,7 @@ public class Code
     int index;
     for (int i = 0; i < length; i++)
     {
-      index = UnityEngine.Random.Range(0, numbers.Count);
+      index = Random.Range(0, numbers.Count);
       code[i] = numbers[index];
       numbers.RemoveAt(index);
     }

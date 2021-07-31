@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Advertisements;
 using UnityEngine.SceneManagement;
@@ -30,11 +30,7 @@ public class ADSUnity : MonoBehaviour
 
   private void Load(Scene scene, LoadSceneMode mode)
   {
-    #if UNITY_ANDROID
-      gameID = "3566525";
-    #elif UNITY_IOS
-      gameID = "3566524";
-    #endif
+    gameID = "3566525"; // ANDROID ID
 
     if (Advertisement.isSupported && !Advertisement.isInitialized) {
       Advertisement.Initialize(gameID, false);
